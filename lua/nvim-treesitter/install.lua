@@ -110,19 +110,28 @@ end
 
 ---@param lang string
 ---@return string|nil
+-- local function get_revision(lang)
+--   if #lockfile == 0 then
+--     load_lockfile()
+--   end
+--
+--   local install_info = get_parser_install_info(lang)
+--   if install_info.revision then
+--     return install_info.revision
+--   end
+--
+--   if lockfile[lang] then
+--     return lockfile[lang].revision
+--   end
+-- end
+local repos = require("tree-sitter-manager.repos")
+
 local function get_revision(lang)
-  if #lockfile == 0 then
-    load_lockfile()
+  local repo = repos[lang]
+  if repo and repo.install_info then
+    return repo.install_info.revision
   end
-
-  local install_info = get_parser_install_info(lang)
-  if install_info.revision then
-    return install_info.revision
-  end
-
-  if lockfile[lang] then
-    return lockfile[lang].revision
-  end
+  return nil
 end
 
 ---@param lang string

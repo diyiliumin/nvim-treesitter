@@ -2315,6 +2315,14 @@ list.systemtap = {
   maintainers = { "@ok-ryoko" },
 }
 
+list.systemverilog = {
+  install_info = {
+    url = "https://github.com/gmlarumbe/tree-sitter-systemverilog",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@gmlarumbe" },
+}
+
 list.t32 = {
   install_info = {
     url = "https://gitlab.com/xasc/tree-sitter-t32.git",
